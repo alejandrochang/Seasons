@@ -1,36 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SeasonDisplay from './SeasonDisplay';
 import './index.css';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { lat: null, lon: null, errorMessage: ''};
-    window.navigator.geolocation.getCurrentPosition(
-      (position) => {
-        this.setState({ lat: position.coords.latitude, lon: position.coords.longitude });
-      },
-      (error) => {
-        this.setState({ errorMessage: error.message });
-      },
-    );
-  }
+  state = { lat: null, lon: null, errorMessage: '' };
 
   componentDidMount() {
-    console.log('My component was rendered to the screen');
+    window.navigator.geolocation.getCurrentPosition(position => {
+        this.setState({ lat: position.coords.latitude, lon: position.coords.longitude });
+      }, error => { this.setState({ errorMessage: error.message });
+    });
   }
 
-  componentDidUpdate() {
-    console.log('My component was updated');
-  }
-  
+
   render() {
     if (this.state.errorMessage && !this.state.lat && !this.state.lon) {
       return <div>Error: {this.state.errorMessage}</div>
     } else if (!this.state.errorMessage && !this.state.lat || !this.state.lon) {
       return <div>...loading</div>
     } else {
-      return <div>Your current latitude and longitude is [lat: {this.state.lat}, lon: {this.state.lon}]</div>
+      return <SeasonDisplay lat={this.state.lat} lon={this.state.lon}/>
     } 
   };
 }
