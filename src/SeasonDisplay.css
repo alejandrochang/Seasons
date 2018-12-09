@@ -33,6 +33,6 @@
   background-color: orange;
 }
 
-.ui segment {
-  height: 100vh;
-} 
+.border-grey {
+  /* border: 25px solid lightgray; */
+}

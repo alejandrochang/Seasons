@@ -14,16 +14,20 @@ class App extends React.Component {
     });
   }
 
-
-  render() {
+  renderContent() {
     if (this.state.errorMessage && !this.state.lat && !this.state.lon) {
       return <div>Error: {this.state.errorMessage}</div>
-    } 
+    }
     if (!this.state.errorMessage && this.state.lat && this.state.lon) {
       return <SeasonDisplay lat={this.state.lat} lon={this.state.lon} />
-    } 
+    }
 
-    return <div><Spinner message="Please allow us to read your Location..."/></div>
+    return <div><Spinner message="Please allow us to read your Location..." /></div>
+  }
+  render() {
+    return(
+      <div className="border-grey">{this.renderContent()}</div>
+    );
   };
 }
 
