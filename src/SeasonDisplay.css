@@ -1,3 +1,9 @@
+h1 {
+  position: relative;
+  left: 7%;
+  bottom: 28%;
+}
+
 .icon-left {
   position: absolute;
   top: 10px;
@@ -12,7 +18,7 @@
 
 .season-display {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   height: 100vh;
 }
@@ -26,13 +32,18 @@
 }
 
 .winter {
-  background-color: aliceblue;
+  background-image: url('images/winter.jpg');
 }
 
 .summer {
-  background-color: orange;
+  background-image: url('images/summer.jpg');
 }
 
-.border-grey {
-  /* border: 25px solid lightgray; */
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  font-weight: bold;
+  font-size: 40px;
 }
